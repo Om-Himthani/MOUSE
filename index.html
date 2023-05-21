@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .div1 {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+
+
+        }
+
+        .div2 {
+            width: 566px;
+            height: 100%;
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div1">
+        <div class="div2">
+
+        </div>
+    </div>
+    <script>
+        let currentXposition = 0
+        let startingXPoint = 400
+        let endXpoint = window.innerWidth - 400
+        let fracxvalue = 0
+        let mousexrange = endXpoint - startingXPoint
+        let currentYposition = 0
+        
+        let endYpoint = window.innerHeight
+        let fracyvalue = 0
+        
+        const mouse = (event) => {
+
+            currentXposition = event.clientX - startingXPoint
+            fracxvalue = currentXposition / mousexrange
+            console.log(fracxvalue);
+            currentYposition = event.clientY
+            fracyvalue = currentYposition / endYpoint
+            console.log(fracyvalue);
+
+        }
+        window.addEventListener('mousemove', mouse)
+
+    </script>
+</body>
+
+</html>

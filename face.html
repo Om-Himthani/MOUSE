@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .main_div {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(158, 158, 255);
+        }
+
+        .face {
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .eye {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            box-shadow: 0px 0px 14px 12px rgb(216, 216, 216);
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            overflow: hidden;
+        }
+
+        .pupil {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main_div">
+        <div class="face">
+            <div class="eye">
+                <div class="pupil">
+
+                </div>
+            </div>
+            <div class="eye">
+                <div class="pupil">
+
+                </div>
+            </div>
+        </div>
+        <script>
+            let pupil = document.getElementsByClassName('pupil')
+            pupilstratingpoint = -100
+            pupilrange = 200
+            pupilarr = Array.from(pupil)
+            let currentXposition = 0
+            let endXpoint = window.innerWidth
+            let fracxvalue = 0
+            let currentYposition = 0
+            let endYpoint = window.innerHeight
+            let fracyvalue = 0
+            const mouse = (event) => {
+                currentXposition = event.clientX
+                fracxvalue = currentXposition / endXpoint
+                currentYposition = event.clientY
+                fracyvalue = currentYposition / endYpoint
+                let mousex = (fracxvalue * pupilrange) + pupilstratingpoint
+                let mousey = (fracyvalue * pupilrange) + pupilstratingpoint
+                pupilarr.forEach((element) => {
+                    element.style.transform = `translate(${mousex}px,${mousey}px)`
+                });
+            }
+            const resize = () => {
+                endXpoint = window.innerWidth
+                endYpoint = window.innerHeight
+            }
+            window.addEventListener('mousemove', mouse)
+            window.addEventListener('resize', resize)
+        </script>
+</body>
+
+</html>
